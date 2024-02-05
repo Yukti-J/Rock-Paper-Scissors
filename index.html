@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="./index.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <script src="index.js"></script>
+</head>
+<body id="body">
+        <div id="after">
+        </div>
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Rock, Paper & Scissors</h1>
+        </div>
+        <!-- ROUND -->
+        <div class="whole"></div>
+        <div class="rounds">
+            ROUND: <span class="round" id="round">1</span>
+        </div>
+        <!-- MAIN -->
+        <div class="main">
+            <div class="comp">
+                <div class="compImg" id="compImg"><img class="compImg intiCompImg" src='leftrock.png' /></div>
+                <div class="compScore" id="compScore">0</div>
+            </div>
+            <div id="statusDiv">
+                <div class="status neutral" id="status">Let's Play</div>
+            </div>
+            <div class="user">
+                <div class="userImg" id="userImg"><img class="userImg intiUserImg" src='rightrock.png' /></div>
+                <div class="userScore" id="userScore">0</div>
+            </div>
+        </div>
+        <!-- INPUT -->
+        <div class="userInp">
+            <div class="input">
+            <span class="inpcontent">Make your Choice: </span>
+            <button onclick="selRock()" id="btn" class="rockbtn">
+                <img class="rockbtnimg" src="rightrock.png"/>
+            </button>
+            <button onclick="selPaper()" id="btn" class="paperbtn">
+                <img class="paperbtnimg" src="rightpaper.png"/>
+            </button>
+            <button onclick="selScissors()" id="btn" class="scissorbtn">
+                <img class="scissorbtnimg" src="rightscissor.png"/>
+            </button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
