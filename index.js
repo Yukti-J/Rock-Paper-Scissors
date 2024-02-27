@@ -1,125 +1,172 @@
-
-let round = 0;
+let round=1;
 let comp;
-let userChoice;
-let playStatus = "Let's Play";
-let scoreComp = 0;
-let scoreUser = 0;
-function randomVal(){
-    comp = Math.floor(Math.random() * (4 - 1)) + 1;
+let userval;
+let compScore=0;
+let userScore=0;
 
-    if(comp == 1){
-        document.getElementById("compImg").innerHTML = "<img class='compImg' src='leftrock.png' />"
-    }else if(comp == 2){
-        document.getElementById("compImg").innerHTML = "<img class='compImg' src='leftpaper.png' />"
-    }else if(comp == 3){
-        document.getElementById("compImg").innerHTML = "<img class='compImg' src='leftscissor.png' />"
-    }
-
+function trigAnim () {
+    document.getElementById('compImg').classList.add('triggerAnimation');
+    document.getElementById('userImg').classList.add('triggerAnimation');
+}
+function removeAnim () {
+    document.getElementById('compImg').classList.remove('triggerAnimation');
+    document.getElementById('userImg').classList.remove('triggerAnimation');
+}
+function clearInput(round) {
+    document.getElementById('compImg').setAttribute("src", "./images/leftrock.png");
+    document.getElementById('userImg').setAttribute("src", "./images/rightrock.png");
+    document.querySelector('.round').innerHTML = round;
+    title(4);
+}
+function randomVal() {
+    comp = Math.floor(Math.random()*3);
     return comp;
 }
-
-function playRound(a, b){
-    let final = "It's a tie"
-    round++;
-    document.getElementById('round').innerText = `${round}`;
-    if(round>5){
-        if(scoreUser>scoreComp) final = "You Win";
-        else if(scoreUser<scoreComp) final = "You Lose";
-        document.getElementById('after').innerHTML=`<div class="resultScreen">
-                                                        <div class="resultTitle">${final}</div>
-                                                        <button class= "playButton" onclick="reload()">PLAY AGAIN</button>
-                                                    </div>`
-                                                     
-    }else{
-
-        if (a === 1 && userChoice == 1) {
-            playStatus = "It's a tie";
-        } else if (a === 1 && userChoice === 2) {
-            playStatus = "You win";
-            scoreUser += 10;
-        } else if (a === 1 && userChoice === 3) {
-            playStatus = "You lose";
-            scoreComp += 10;
-        } else if (a === 2 && userChoice === 1) {
-            playStatus = "You lose";
-            scoreComp += 10;
-        } else if (a === 2 && userChoice === 2) {
-            playStatus = "It's a tie";
-        } else if (a === 2 && userChoice === 3) {
-            playStatus = "You win";
-            scoreUser += 10;
-        } else if (a === 3 && userChoice === 1) {
-            playStatus = "You win";
-            scoreUser += 10;
-        } else if (a === 3 && userChoice === 2) {
-            playStatus = "You lose";
-            scoreComp += 10;
-        } else if (a === 3 && userChoice === 3) {
-            playStatus = "It's a tie";
-        }
-
-
-        if(playStatus === "You win"){
-            document.getElementById('statusDiv').innerHTML = "<div class='status win' id='status'>You Win</div>";
-        }else if(playStatus === "You lose"){
-            document.getElementById('statusDiv').innerHTML = "<div class='status lose' id='status'>You Lose</div>";
-        }else{
-            document.getElementById("statusDiv").innerHTML = "<div class='status neutral' id='status'>It's a Tie</div>"
-        }
-        document.getElementById('compScore').innerText = `${scoreComp}`;
-        document.getElementById('userScore').innerText = `${scoreUser}`;
-        document.getElementById('btn').disabled = true;
-        
+function title(choice) {
+    if (choice == 1 ){
+        document.getElementById('status').innerHTML = "You Won !";
+        document.getElementById('status').style.color = "green" ;
+    }
+    else if (choice == 2 ){
+        document.getElementById('status').innerHTML = "Computer Won !";
+        document.getElementById('status').style.color = "red";
+    }
+    else if (choice == 3 ){
+        document.getElementById('status').innerHTML = "It's a Draw !";
+        document.getElementById('status').style = "#003f7d";
+    }
+    else if (choice == 4 ){
+        document.getElementById('status').innerHTML = "Let's Play!";
+        document.getElementById('status').style = "#003f7d";
     }
 }
 
-function selRock(){
-    userChoice = 1;
-    
-    document.getElementById("userImg").innerHTML = "<img class='userImg' src='rightrock.png' />"
-    let c = randomVal();
-    playRound(c, userChoice);
+function playOn (compChoice,userChoice) {
+    if(round <= 5){
+        if( compChoice == 0 ){
 
-    setTimeout(function() {
-        document.getElementById('btn').disabled = false;
-        document.getElementById("compImg").innerHTML = "<img  class='compImg intiCompImg' src='leftrock.png' />"
-        document.getElementById("userImg").innerHTML = "<img  class='userImg intiUserImg' src='rightrock.png' />"
-        document.getElementById("statusDiv").innerHTML = "<div class='status neutral' id='status'>Let's Play</div>"
-    }, 1000);
+            if (userChoice == 0 ) {
+                title(3);
+            }
+            else if(userChoice == 1 ) {
+                document.getElementById('userImg').setAttribute("src" , "./images/rightpaper.png");
+                userScore = userScore+10 ;
+                document.getElementById('userScore').innerHTML = userScore ;
+                title(1);
+            }
+            else if(userChoice == 2 ) {
+                document.getElementById('userImg').setAttribute("src" , "./images/rightscissor.png");
+                compScore = compScore+10;
+                document.getElementById('compScore').innerHTML = compScore ;
+                title(2);
+            }
+        }
+
+        else if ( compChoice == 1 ){
+            document.getElementById('compImg').setAttribute("src" , "./images/leftpaper.png");
+
+            if ( userChoice == 0 ) {
+                compScore = compScore+10;
+                document.getElementById('compScore').innerHTML = compScore ;
+                title(2);
+            }
+            else if(userChoice == 1 ) {
+                document.getElementById('userImg').setAttribute("src" , "./images/rightpaper.png");
+                title(3);
+            }
+            else if(userChoice == 2 ) {
+                document.getElementById('userImg').setAttribute("src" , "./images/rightscissor.png");
+                userScore = userScore+10 ;
+                document.getElementById('userScore').innerHTML = userScore ;
+                title(1);
+            }
+        }
+
+        if( compChoice == 2 ){
+            document.getElementById('compImg').setAttribute("src", "./images/leftscissor.png");
+
+            if (userChoice == 0) {
+                userScore = userScore+10 ;
+                document.getElementById('userScore').innerHTML = userScore ;
+                title(1)
+            }
+            else if(userChoice == 1 ) {
+                document.getElementById('userImg').setAttribute("src" , "./images/rightpaper.png");
+                compScore = compScore+10;
+                document.getElementById('compScore').innerHTML = compScore ;
+                title(2);
+            }
+            else if(userChoice == 2 ) {
+                document.getElementById('userImg').setAttribute("src" , "./images/rightscissor.png");
+                title(3);
+            }
+        }
+    }else {
+        window.location.reload();
+    }
 }
 
-function selPaper(){
-    userChoice = 2;
+
+function selRock() {
+    trigAnim();
+    let userChoice = 0;
+    let compChoice = randomVal();
+
+    setTimeout(() => {
+        clearTimeout();
+        removeAnim();
+        document.getElementById('userImg').setAttribute("src" , "./images/rightrock.png");
+        playOn(compChoice,userChoice);
+        console.log("compChoice", compChoice);
+    }
+    ,1500);
+
+    setTimeout(()=> {
+        round++;
+        clearInput(round);
+    },2500);
     
-    document.getElementById("userImg").innerHTML = "<img class='userImg' src='rightpaper.png' />"
-    let c = randomVal();
-    playRound(c, userChoice);
 
-    setTimeout(function() {
-        document.getElementById('btn').disabled = false;
-        document.getElementById("compImg").innerHTML = "<img class='compImg intiCompImg' src='leftrock.png' />"
-        document.getElementById("userImg").innerHTML = "<img class='userImg intiUserImg' src='rightrock.png' />"
-        document.getElementById("statusDiv").innerHTML = "<div class='status neutral' id='status'>Let's Play</div>"
-    }, 1000);
-}
 
-function selScissors(){
-    userChoice = 3;
     
-    document.getElementById("userImg").innerHTML = "<img class='userImg' src='rightscissor.png' />"
-    let c = randomVal();
-    playRound(c, userChoice);
-
-    setTimeout(function() {
-        document.getElementById('btn').disabled = false;
-        document.getElementById("compImg").innerHTML = "<img class='compImg intiCompImg' src='leftrock.png' />"
-        document.getElementById("userImg").innerHTML = "<img class='userImg intiUserImg' src='rightrock.png' />"
-        document.getElementById("statusDiv").innerHTML = "<div class='status neutral' id='status'>Let's Play</div>"
-    }, 1000);
 }
+function selPaper() {
+    trigAnim();
+    let userChoice = 1;
+    let compChoice = randomVal();
+    
 
-function reload(){
-    console.log("Click")
-    window.location.reload();
+    setTimeout(() => {
+        clearTimeout();
+        removeAnim();
+        document.getElementById('userImg').setAttribute("src" , "./images/rightpaper.png");
+        playOn(compChoice,userChoice);
+        console.log("compChoice", compChoice);
+    }
+    ,1500);
+
+    setTimeout(()=> {
+        round++;
+        clearInput(round);
+    },2500);
+
+}
+function selScissor() {
+    trigAnim();
+    let userChoice = 2;
+    let compChoice = randomVal();
+
+    setTimeout(() => {
+        clearTimeout();
+        removeAnim();
+        document.getElementById('userImg').setAttribute("src" , "./images/rightscissor.png");
+        playOn(compChoice,userChoice);
+        console.log("compChoice", compChoice);
+    }
+    ,1500);
+
+    setTimeout(()=> {
+        round++;
+        clearInput(round);
+    },2500);
 }

@@ -1,244 +1,96 @@
-body{
-    padding: 0;
+*{
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
     background-color: #FFEED9;
-    align-items: center;
-    justify-content: center;
+}
+body{
+    text-align: center;
 }
 
-/* TITLE */
-.title{
+.title {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight: 900;
-    font-size: 25px;
-    text-align: center;
     color: #B46A4E;
-    font-style: italic;
-    padding: 30px 0;
+    padding: 2em 0 2em;
+    font-size: 1.5em;
 }
-/* ROUND */
-.rounds{
+.rounds {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 25px;
-    font-weight: 900;
-    color: #496871;
-    text-align: center;
-    margin: 40px 0;
+    color:  #496871;
+    font-weight: 600;
+    font-size: 1.3em;
 }
-/* MAIN */
-.main{
+
+.main {
+    margin: 2.5em 0 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    justify-content: center;
+    grid-template-columns: repeat(3,1fr);
     align-items: center;
-    place-items: center;
 }
-.intiCompImg{
-    transform: rotate(-0.1turn);
+
+img {
+    width: 40%;
+    /* display: none; */
 }
-.intiUserImg{
-    transform: rotate(0.1turn);
+.comp , .user {
+    display: grid;
+
 }
-.comp, .user{
-    height: 200px;
-    width: 200px;
-    text-align: center;
+.comp {
+    justify-items: end;
 }
-.compImg, .userImg{
-    height: 200px;
-    width: 200px;
-    align-items: center;
-    justify-content: center;
-    align-self: center;
-    margin: auto;
+.user{
+    justify-items: start;
 }
-.compScore, .userScore{
+.comp img{
+    transform: rotate(-20deg);
+    transition: all 0.3s ease-in-out;
+}
+.user img {
+    transform: rotate(20deg);
+    transition: all 0.3s ease-in-out;
+}
+.triggerAnimation {
+    animation: shake 0.2s linear 0s infinite alternate;
+}
+p {
+    padding: 1em 6em;
+}
+
+.status {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 25px;
-    font-weight: 900;
-    color: #C58066;
-    text-align: center;
-    margin-top: 20px;
-}
-.status{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 50px;
-    font-weight: 1000;
-    text-align: center;
-}
-.neutral{
     color: #003f7d;
+    font-size: 2.5em;
+    font-weight: bold;
 }
-.win{
-    color: #0a5c36;
-}
-.lose{
-    color: red;
-}
-.userImg{
-    height: 200px;
-    width: 200px;
-}
-/* INPUT */
-.userInp{
-    height: 80px;
-    width: 100%;
-    margin-top: 80px;
-    float: right;
-    right: 0;
-    
-}
-.input{
-    float: right;
-    padding-right: 30px;
-}
-.inpcontent{
-    height: 80px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 25px;
-    font-weight: 900;
-    color: #496871;
-    text-align: center;
-    transform: translateY(-50%);
 
-}
-.scissorbtn, .rockbtn, .paperbtn{
-    height: 80px;
-    width: 80px;
-    border: 0px;
-    background-color: #FFEED9;
-    margin-left: 30px;
-}
-.scissorbtn, .rockbtn, .paperbtn:hover{
-    cursor: pointer;
-}
-.scissorbtnimg, .rockbtnimg, .paperbtnimg{
-    height: 80px;
-    width: 80px;
-
-}
-/* RESULT SCREEN */
-.resultScreen{
-    margin: 0;
+.inputDiv:nth-child(1) {
     width: 100%;
-    height: 100vh;
-    background-color: #161515e7;
-    z-index: 100;
-    position: absolute;
-    justify-content: center;
-    text-align: center;
-    
 }
-.resultTitle{
-    font-size: 150px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: 900;
-    color: white;
-    height: 200px;
-    justify-content: center;
-    text-align: center;
-    margin-top: 10%;
+
+.inputDiv button {
+    width: 15%;
+    border: none;
 }
-.playButton{
-    justify-content: center;
-    text-align: center;
-    color: #fff;
-    background-color: #496871;
-    border: 2px solid #496871;
-    border-radius: 20px;
-    width: 250px;
-    height: 40px;
-    font-size: 30px;
-    font-weight: 400;
-    margin: 50px auto;
-    z-index: 1000;
+
+
+.inputDiv button img {
+    transition: all 0.2s ease-in-out;
 }
-.playButton:hover{
-    color: #496871;
-    background-color: #fff;
+.inputDiv button img:hover {
+    transform: scale(1.2);
     cursor: pointer;
 }
 
-@media only screen and (max-width: 700px) {
-    .status{
-        font-size: 30px;
+
+@keyframes shake {
+    0% {
+        transform:  translateY(10);
     }
-}
-@media only screen and (max-width: 550px) {
-    .status{
-        font-size: 30px;
+    50% {
+        transform:  translateY(-10);
     }
-    .title{
-        font-weight: 300;
-        font-size: 18px;
-        padding: 10px 0;
-    }
-    .rounds{
-        margin-top: 20px;
-    }
-    .main{
-        display: flex;
-        flex-direction: column;
-    }
-    .comp{
-        height: 100px;
-        width: 100px;
-        padding-left: 20px;
-        align-self: start;
-    }
-    .user{
-        height: 100px;
-        width: 100px;
-        align-self: flex-end;
-        padding-right: 20px;
-        order: 1;
-    }
-    .compImg, .userImg{
-        height: 100px;
-        width: 100px;
-    }
-    .compScore, .userScore{
-        font-size: 20px;
-        font-weight: 400;
-    }
-    .status{
-        font-size: 25px;
-        font-weight: 300;
-        margin-top: 30px;
-    }
-    .statusDiv{ 
-        width: 100%;
-    }
-    .inpcontent{
-        display: none;
-    }
-    .input{
-        display: flex;
-        justify-content: space-between;
-        float: unset;
-    }
-    .scissorbtn, .rockbtn, .paperbtn{
-        height: 50px;
-        width: 50px;
-    }
-    .scissorbtnimg, .rockbtnimg, .paperbtnimg{
-        height: 50px;
-        width: 50px;
-    }
-    .resultTitle{
-        font-size: 50px;
-        font-weight: 500;
-        padding-top: 80px;
-    }
-    .playButton{
-        border-radius: 5px;
-        width: 150px;
-        height: 30px;
-        font-size: 15px;
-        font-weight: 200;
-        margin: 20px auto;
-        z-index: 1000;
+    100% {
+        transform: translateY(0);
     }
 }
