@@ -101,8 +101,14 @@ function playOn (compChoice,userChoice) {
                 title(3);
             }
         }
-    }else {
-        window.location.reload();
+    } else {
+        let final = "It's a tie"
+        if(userScore>compScore) final = "You Win";
+        else if(userScore<compScore) final = "Computer Won";
+        document.getElementById('after').innerHTML=`<div class="resultScreen">
+                                                    <p class="resultTitle">${final}</p>
+                                                    <button class= "playButton" onclick="reload()">PLAY AGAIN</button>
+                                                    </div>`
     }
 }
 
@@ -113,7 +119,6 @@ function selRock() {
     let compChoice = randomVal();
 
     setTimeout(() => {
-        clearTimeout();
         removeAnim();
         document.getElementById('userImg').setAttribute("src" , "./images/rightrock.png");
         playOn(compChoice,userChoice);
@@ -169,4 +174,8 @@ function selScissor() {
         round++;
         clearInput(round);
     },2500);
+}
+
+function reload(){
+    window.location.reload();
 }

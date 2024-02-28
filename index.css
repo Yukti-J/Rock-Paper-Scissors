@@ -8,6 +8,7 @@ body{
     text-align: center;
 }
 
+/* ---------------------SECTION 1----------------------- */
 .title {
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: #B46A4E;
@@ -20,27 +21,22 @@ body{
     font-weight: 600;
     font-size: 1.3em;
 }
+/* ---------------------SECTION 1----------------------- */
 
+/* ---------------------SECTION 2----------------------- */
 .main {
     margin: 2.5em 0 0;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     align-items: center;
 }
-
+.choice, .compScore, .userScore{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25px;
+    padding: 1em 6em;
+}
 img {
-    width: 40%;
-    /* display: none; */
-}
-.comp , .user {
-    display: grid;
-
-}
-.comp {
-    justify-items: end;
-}
-.user{
-    justify-items: start;
+    width: 35%
 }
 .comp img{
     transform: rotate(-20deg);
@@ -53,9 +49,6 @@ img {
 .triggerAnimation {
     animation: shake 0.2s linear 0s infinite alternate;
 }
-p {
-    padding: 1em 6em;
-}
 
 .status {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -63,26 +56,6 @@ p {
     font-size: 2.5em;
     font-weight: bold;
 }
-
-.inputDiv:nth-child(1) {
-    width: 100%;
-}
-
-.inputDiv button {
-    width: 15%;
-    border: none;
-}
-
-
-.inputDiv button img {
-    transition: all 0.2s ease-in-out;
-}
-.inputDiv button img:hover {
-    transform: scale(1.2);
-    cursor: pointer;
-}
-
-
 @keyframes shake {
     0% {
         transform:  translateY(10);
@@ -94,3 +67,101 @@ p {
         transform: translateY(0);
     }
 }
+/* ---------------------SECTION 2----------------------- */
+
+/* ---------------------SECTION 3----------------------- */
+.inputDiv:nth-child(1) {
+    width: 100%;
+}
+.inputDiv button {
+    width: 15%;
+    border: none;
+}
+.inputDiv button img {
+    transition: all 0.2s ease-in-out;
+}
+.inputDiv button img:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+/* ---------------------SECTION 3----------------------- */
+
+/* ---------------------RESULT----------------------- */
+.resultScreen{
+    width: 100%;
+    height: 100vh;
+    background-color: #161515e7;
+    z-index: 100;
+    position: absolute;
+    text-align: center;
+}
+.resultTitle{
+    font-size: 7em;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    background-color: unset;
+    color: white;
+    margin-top: 1.5em;
+}
+.playButton{
+    color: #fff;
+    background-color: #496871;
+    border: 2px solid #496871;
+    border-radius: 10px;
+    padding: 0.3em 0.8em;
+    margin-top: 1em;
+    font-size: 2em;
+    font-weight: 400;
+    z-index: 1000;
+}
+.playButton:hover{
+    color: #496871;
+    background-color: #fff;
+    cursor: pointer;
+}
+/* ---------------------RESULT----------------------- */
+
+/* ---------------------RESPONSIVE----------------------- */
+@media screen and (max-width: 860px) {
+    .title {
+        padding: 2rem 0 1rem;
+        font-size: 1.2rem;
+    }
+    .main {
+        grid-template-columns: repeat(1,1fr);
+    }
+    img {
+        width: 8rem;
+    }
+    .comp, .user{
+        display: flex;
+        flex-direction: column;
+    }
+    .comp{
+        align-items: start;
+    }
+    .compScore, .userScore{
+        padding: 1rem 2rem;
+    }
+    .user{
+        margin-top: 1.5rem;
+        align-items: end;
+    }
+    .status{
+        font-size: 2rem;
+    }
+    .choice{
+        padding: 1rem 1rem;
+    }
+    .inputDiv button {
+        width: 30%;
+    }
+    .inputDiv button img{
+        width: 50%;
+    }
+    .resultTitle{
+        font-size: 5rem;
+    }
+  }
+
+/* ---------------------RESPONSIVE----------------------- */

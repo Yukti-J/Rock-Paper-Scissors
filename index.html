@@ -10,7 +10,7 @@
 </head>
 <body id="body">
 
-    <div class="after"></div>
+    <div id="after"></div>
 
 
     <!-------- Section 1 ---------->
@@ -23,12 +23,12 @@
     <div class="main">
         <div class="comp">
             <img class="compImg" id="compImg" src="./images/leftrock.png" alt="">
-            <p id="compScore">0</p>
+            <p id="compScore" class="compScore">0</p>
         </div>
         <div class="status" id="status">Let's Play!</div>
         <div class="user">
-            <img class="userImg" id="userImg" src="./images//rightrock.png" alt="">
-            <p id="userScore">0</p>
+            <img class="userImg" id="userImg" src="./images/rightrock.png" alt="">
+            <p id="userScore" class="userScore">0</p>
         </div>
     </div>
     <!-------- Section 2 ---------->
@@ -36,7 +36,7 @@
 
     <!-------- Section 3 ---------->
     <div class="inputDiv">
-        <p>Make choice</p>
+        <p class="choice">Make choice</p>
         <button onclick="selRock()" ><img src="./images/rightrock.png" alt=""></button>
         <button onclick="selPaper()" ><img src="./images/rightpaper.png" alt=""></button>
         <button onclick="selScissor()" ><img src="./images/rightscissor.png" alt=""></button>
