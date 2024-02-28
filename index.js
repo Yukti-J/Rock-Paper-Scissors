@@ -4,6 +4,7 @@ let userval;
 let compScore=0;
 let userScore=0;
 
+/* ---------------------SECTION 1----------------------- */
 function trigAnim () {
     document.getElementById('compImg').classList.add('triggerAnimation');
     document.getElementById('userImg').classList.add('triggerAnimation');
@@ -22,6 +23,9 @@ function randomVal() {
     comp = Math.floor(Math.random()*3);
     return comp;
 }
+/* ---------------------SECTION 1 ----------------------- */
+
+/* ---------------------SECTION 4----------------------- */
 function title(choice) {
     if (choice == 1 ){
         document.getElementById('status').innerHTML = "You Won !";
@@ -40,7 +44,9 @@ function title(choice) {
         document.getElementById('status').style = "#003f7d";
     }
 }
+/* ---------------------SECTION 4----------------------- */
 
+/* ---------------------SECTION 3----------------------- */
 function playOn (compChoice,userChoice) {
     if(round <= 5){
         if( compChoice == 0 ){
@@ -111,8 +117,9 @@ function playOn (compChoice,userChoice) {
                                                     </div>`
     }
 }
+/* ---------------------SECTION 3----------------------- */
 
-
+/* ---------------------SECTION 2----------------------- */
 function selRock() {
     trigAnim();
     let userChoice = 0;
@@ -175,6 +182,7 @@ function selScissor() {
         clearInput(round);
     },2500);
 }
+/* ---------------------SECTION 2----------------------- */
 
 function reload(){
     window.location.reload();
